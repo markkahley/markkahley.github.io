@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mark Kahley, aerospace engineering student at Texas A&amp;M. Rocket design and flight testing, flight simulation, and propulsion analysis.">
+<meta property="og:title" content="Mark Kahley, Aerospace Engineering">
+<meta property="og:description" content="Rocket design and flight testing, flight simulation, and propulsion analysis. Texas A&amp;M Aerospace Engineering, Class of 2028.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2c5 6 7 12 7 20H9c0-8 2-14 7-20z' fill='%232c7743'/%3E%3Cpath d='M9 21l-5 8h5zm14 0l5 8h-5z' fill='%2314243a'/%3E%3C/svg%3E">
+<!--ARTIFACT-START-->
+<title>Mark Kahley Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400&amp;family=B612+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
+<style>
+/* Layout: one loud element, a drafting sheet of Plus Ultra 1.0 with balloon callouts,
+   parts list and title block; below it, quiet long-form case studies with a sticky data column. */
+:root {
+  --paper: #f2f4f0;       /* page ground, cool vellum */
+  --sheet: #fbfcfa;       /* drawing sheet and raised surfaces */
+  --ink: #14243a;         /* drafting ink navy */
+  --ink-2: #4b5967;       /* secondary text */
+  --rule: #cdd5cc;        /* hairlines, green-grey */
+  --green: #2a7341;       /* nose-cone green, the one accent */
+  --green-wash: #e2ede3;
+  --plate: #ffffff;       /* figure plates match the white plot backgrounds */
+  --dot: #14243a;         /* callout dots sit on the render, so they keep one color in both themes */
+  --dot-ring: #ffffff;
+
+  --f-display: "B612", "Segoe UI", system-ui, sans-serif;           /* Airbus cockpit-display face */
+  --f-body: "Source Serif 4", "Iowan Old Style", Georgia, serif;     /* echoes the LaTeX portfolio */
+  --f-data: "B612 Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --wrap: 72rem;
+  --gutter: clamp(16px, 4vw, 40px);
+  --bar-h: 3.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0d141c; --sheet: #121b25; --ink: #e2e7ec; --ink-2: #98a5b2;
+    --rule: #283542; --green: #74c38a; --green-wash: #15271c; --plate: #ffffff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0d141c; --sheet: #121b25; --ink: #e2e7ec; --ink-2: #98a5b2;
+  --rule: #283542; --green: #74c38a; --green-wash: #15271c; --plate: #ffffff;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: calc(var(--bar-h) + 1rem); -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  font-optical-sizing: auto;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--green); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+p { margin: 0; }
+sub { font-size: 0.7em; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: var(--bar-h); }
+.bar .who { font-family: var(--f-display); font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.bar nav { display: flex; gap: clamp(0.9rem, 2.5vw, 1.75rem); font-family: var(--f-display); font-size: 0.875rem; }
+.bar nav a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+.bar nav a:hover { color: var(--ink); }
+@media (max-width: 560px) { .bar .who { display: none; } .bar .wrap { justify-content: center; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 4rem); }
+.hero h1 { font-size: clamp(2.7rem, 7.5vw, 4.75rem); letter-spacing: -0.025em; line-height: 0.98; }
+.hero .lede { margin-top: 1.1rem; font-size: clamp(1.2rem, 2.3vw, 1.5rem); line-height: 1.4; max-width: 34ch; }
+.hero .facts { margin-top: 0.9rem; color: var(--ink-2); max-width: 60ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--f-display); font-size: 0.9rem; font-weight: 700;
+  padding: 0.65rem 1.05rem; border: 1.5px solid var(--ink); border-radius: 3px;
+  color: var(--ink); background: transparent; text-decoration: none; cursor: pointer;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--green); border-color: var(--green); color: var(--paper); }
+
+/* ---------- the drafting sheet ---------- */
+.sheet { margin-top: clamp(2.25rem, 5vw, 3.25rem); background: var(--sheet); border: 1.5px solid var(--ink); padding: 5px; }
+.sheet-inner { border: 1px solid var(--ink); padding: clamp(14px, 3vw, 30px); font-family: var(--f-display); }
+.drawing { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1640 / 620; }
+.drawing svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.leader { fill: none; stroke: var(--ink); stroke-width: 1.25; }
+.leader-dot { fill: var(--dot); stroke: var(--dot-ring); stroke-width: 2; vector-effect: non-scaling-stroke; }
+@media (prefers-reduced-motion: no-preference) {
+  .leader { stroke-dasharray: 1; animation: draw 0.9s cubic-bezier(.3,.7,.2,1) backwards; }
+  .leader:nth-of-type(2) { animation-delay: .1s; }
+  .leader:nth-of-type(3) { animation-delay: .2s; }
+  .leader:nth-of-type(4) { animation-delay: .3s; }
+  @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+}
+.balloon {
+  position: absolute; transform: translate(-50%, -50%);
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink);
+  display: grid; place-items: center; font-weight: 700; font-size: 0.95rem; line-height: 1;
+}
+@media (max-width: 640px) { .balloon { width: 1.5rem; height: 1.5rem; font-size: 0.72rem; border-width: 1.25px; } }
+
+.sheet-foot { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); margin-top: clamp(1rem, 2.5vw, 1.75rem); border: 1px solid var(--ink); }
+.bom { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.35; }
+.bom th, .bom td { text-align: left; vertical-align: top; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); }
+.bom thead th { font-weight: 400; color: var(--ink-2); font-size: 0.72rem; border-bottom: 1px solid var(--ink); }
+.bom tbody tr:last-child td { border-bottom: 0; }
+.bom td:first-child { width: 2.6rem; text-align: center; font-weight: 700; }
+.bom td:nth-child(2) { font-weight: 700; white-space: nowrap; }
+.bom td:nth-child(3) { color: var(--ink-2); }
+.titleblock { display: grid; grid-template-columns: 1fr 1fr; border-left: 1px solid var(--ink); }
+.tb { padding: 0.45rem 0.65rem 0.55rem; border-bottom: 1px solid var(--rule); min-width: 0; }
+.tb:nth-child(even) { border-right: 1px solid var(--rule); }
+.tb-wide { grid-column: 1 / -1; }
+.tb:last-child, .tb:nth-last-child(2):not(.tb-wide) { border-bottom: 0; }
+.tb-label { display: block; font-size: 0.68rem; color: var(--ink-2); }
+.tb-value { display: block; font-weight: 700; font-size: 0.92rem; line-height: 1.25; }
+.tb-wide .tb-value { font-size: 1.15rem; }
+@media (max-width: 760px) {
+  .sheet-foot { grid-template-columns: 1fr; }
+  .titleblock { border-left: 0; border-top: 1px solid var(--ink); }
+  .bom td:nth-child(2) { white-space: normal; }
+}
+
+/* ---------- sections ---------- */
+.section { padding-block: clamp(3rem, 7vw, 5rem); border-top: 1px solid var(--rule); }
+.section-head { margin-bottom: clamp(1.75rem, 4vw, 2.75rem); display: grid; gap: 0.55rem; }
+.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.2rem); letter-spacing: -0.015em; }
+.section-head p { color: var(--ink-2); max-width: 62ch; }
+
+.role { color: var(--ink-2); margin-top: 0.4rem; }
+.prose { max-width: 66ch; }
+.prose > * + * { margin-top: 0.9rem; }
+ul.points { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.6rem; }
+ul.points li::marker { color: var(--green); }
+ul.points strong { font-weight: 600; }
+
+/* spec / readout tables share the title-block language */
+.spec { width: 100%; border-collapse: collapse; border: 1px solid var(--ink); background: var(--sheet); font-family: var(--f-display); }
+.spec caption { caption-side: top; text-align: left; font-size: 0.78rem; color: var(--ink-2); padding-bottom: 0.4rem; }
+.spec th, .spec td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: baseline; }
+.spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
+.spec th { font-weight: 400; font-size: 0.8rem; color: var(--ink-2); }
+.spec td { font-weight: 700; font-size: 0.95rem; }
+.spec td.num { text-align: right; white-space: nowrap; font-family: var(--f-data); font-variant-numeric: tabular-nums; font-weight: 700; }
+.spec tr.key { background: var(--green-wash); }
+.spec tr.key td { color: var(--green); }
+
+/* ---------- current work ---------- */
+.now-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.now-grid > * { min-width: 0; }
+.now-main h3, .now-side h3 { font-size: 1.3rem; }
+.now-main .spec { margin-block: 1.4rem; }
+.now-side { border-left: 1px solid var(--rule); padding-left: clamp(1.25rem, 3vw, 2rem); }
+@media (max-width: 860px) {
+  .now-grid { grid-template-columns: 1fr; }
+  .now-side { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 2rem; }
+}
+
+/* ---------- projects ---------- */
+.project + .project { margin-top: clamp(3.5rem, 8vw, 5.5rem); padding-top: clamp(3.5rem, 8vw, 5.5rem); border-top: 1px dashed var(--rule); }
+.project-head { margin-bottom: 1.75rem; display: grid; gap: 0.35rem; }
+.project-head h3 { font-size: clamp(1.5rem, 3vw, 1.95rem); letter-spacing: -0.01em; }
+.project-head .sub { color: var(--ink-2); font-size: 1.1rem; }
+.project-body { display: grid; grid-template-columns: 15.5rem minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; }
+.project-aside { position: sticky; top: calc(var(--bar-h) + 1.25rem + env(safe-area-inset-top, 0px)); display: grid; gap: 1.4rem; font-family: var(--f-display); }
+.meta-block dt { font-size: 0.75rem; color: var(--ink-2); }
+.meta-block dd { margin: 0.15rem 0 0; font-size: 0.9rem; line-height: 1.45; }
+.meta-block { display: grid; gap: 0.8rem; margin: 0; }
+.project-main { min-width: 0; display: grid; gap: 1.6rem; }
+.project-main .lead { font-size: 1.2rem; line-height: 1.5; max-width: 60ch; }
+.project-main h4 { font-size: 1rem; margin-bottom: 0.6rem; }
+@media (max-width: 860px) {
+  .project-body { grid-template-columns: 1fr; }
+  .project-aside { position: static; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); align-items: start; }
+}
+
+.figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0; }
+.figs.stack { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 520px) { .figs { grid-template-columns: minmax(0, 1fr); } }
+figure { margin: 0; min-width: 0; display: grid; gap: 0.5rem; align-content: start; }
+.plate {
+  display: block; width: 100%; padding: 0.6rem; margin: 0;
+  background: var(--plate); border: 1px solid var(--rule); border-radius: 2px;
+  cursor: zoom-in; font: inherit; color: inherit;
+}
+.plate img { width: 100%; }
+.plate.photo { padding: 0; overflow: hidden; }
+.plate:hover { border-color: var(--ink-2); }
+figcaption { font-size: 0.86rem; line-height: 1.45; color: var(--ink-2); }
+figcaption b { font-family: var(--f-display); color: var(--ink); font-weight: 700; margin-right: 0.3em; }
+
+
+/* ---------- background ---------- */
+.bg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3rem); }
+.bg-grid > div { min-width: 0; }
+.bg-grid h3 { font-size: 1.05rem; margin-bottom: 0.9rem; padding-bottom: 0.55rem; border-bottom: 1px solid var(--ink); }
+.entries { display: grid; gap: 1.1rem; margin: 0; }
+.entries dt { font-weight: 600; line-height: 1.35; }
+.entries dd { margin: 0.2rem 0 0; color: var(--ink-2); font-size: 0.97rem; line-height: 1.5; }
+.entries .when { font-family: var(--f-display); font-size: 0.78rem; color: var(--ink-2); display: block; margin-top: 0.15rem; font-weight: 400; }
+@media (max-width: 900px) { .bg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .bg-grid { grid-template-columns: 1fr; } }
+
+/* ---------- contact ---------- */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-list { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--ink); font-family: var(--f-display); }
+.contact-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.35rem 1rem; padding-block: 0.8rem; border-bottom: 1px solid var(--rule); }
+.contact-row dt { font-size: 0.78rem; color: var(--ink-2); }
+.contact-row dd { margin: 0; display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; min-width: 0; }
+.contact-row a { font-weight: 700; overflow-wrap: anywhere; }
+.copy { font-family: var(--f-display); font-size: 0.75rem; padding: 0.2rem 0.55rem; border: 1px solid var(--rule); border-radius: 3px; background: transparent; color: var(--ink-2); cursor: pointer; }
+.copy:hover { border-color: var(--ink-2); color: var(--ink); }
+.site-foot { padding-block: 2rem 2.5rem; color: var(--ink-2); font-size: 0.85rem; border-top: 1px solid var(--rule); }
+
+/* ---------- figure viewer ---------- */
+dialog.viewer { border: 0; padding: 0; background: transparent; max-width: 94vw; max-height: 92vh; overflow: visible; }
+dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
+.viewer-inner { display: grid; gap: 0.6rem; justify-items: center; }
+.viewer img { max-width: 94vw; max-height: 80vh; width: auto; height: auto; background: #ffffff; padding: 0.5rem; border-radius: 2px; }
+.viewer p { color: #e6ebf0; font-size: 0.9rem; max-width: 70ch; text-align: center; font-family: var(--f-body); }
+.viewer .btn { color: #e6ebf0; border-color: #e6ebf0; }
+.viewer .btn:hover { background: #e6ebf0; color: #0d141c; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="who" href="#top">Mark Kahley</a>
+    <nav aria-label="Sections">
+      <a href="#now">Now</a>
+      <a href="#projects">Projects</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Mark Kahley</h1>
+      <p class="lede">Aerospace engineering student at Texas A&amp;M. I design, build, and fly rockets, and I write the simulations that predict how they will fly.</p>
+      <p class="facts">B.S. Aerospace Engineering with a minor in Mathematics, Class of 2028. 3.86 GPA, Engineering Honors. Looking for a summer 2027 internship in aerospace.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:mark.a.kahley@gmail.com">Email me</a>
+        <a class="btn" href="Mark_Kahley_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/mark-kahley" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet-inner">
+          <div class="drawing" role="img" aria-label="SolidWorks side view of Plus Ultra 1.0 with numbered callouts for the nose cone, body tube, fins and motor mount">
+            <svg viewBox="-40 -120 1640 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <image href="images/plus-ultra-cad.png" x="0" y="0" width="1458" height="450"/>
+              <path class="leader" pathLength="1" vector-effect="non-scaling-stroke" d="M215 -70 L250 270"/>
+              <path class="leader" pathLength="1" vector-effect="non-scaling-stroke" d="M760 -70 L760 272"/>
+              <path class="leader" pathLength="1" vector-effect="non-scaling-stroke" d="M1190 -70 L1305 132"/>
+              <path class="leader" pathLength="1" vector-effect="non-scaling-stroke" d="M1530 297 L1408 297"/>
+              <circle class="leader-dot" cx="250" cy="270" r="7"/>
+              <circle class="leader-dot" cx="760" cy="272" r="7"/>
+              <circle class="leader-dot" cx="1305" cy="132" r="7"/>
+              <circle class="leader-dot" cx="1408" cy="297" r="7"/>
+            </svg>
+            <span class="balloon" aria-hidden="true" style="left:15.55%;top:8.06%">1</span>
+            <span class="balloon" aria-hidden="true" style="left:48.78%;top:8.06%">2</span>
+            <span class="balloon" aria-hidden="true" style="left:75.00%;top:8.06%">3</span>
+            <span class="balloon" aria-hidden="true" style="left:95.73%;top:67.26%">4</span>
+          </div>
+
+          <div class="sheet-foot">
+            <table class="bom">
+              <thead><tr><th scope="col">Item</th><th scope="col">Part</th><th scope="col">Notes</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Nose cone</td><td>3D printed on a Bambu Lab P1S</td></tr>
+                <tr><td>2</td><td>Body tube</td><td>Cardboard airframe</td></tr>
+                <tr><td>3</td><td>Fins</td><td>3D printed, through-the-wall mount with a friction fit that holds alignment during assembly</td></tr>
+                <tr><td>4</td><td>Motor mount</td><td>Custom printed mount that aligns the fins and holds the Estes E12 in place</td></tr>
+              </tbody>
+            </table>
+            <div class="titleblock">
+              <div class="tb tb-wide"><span class="tb-label">Title</span><span class="tb-value">Plus Ultra 1.0</span></div>
+              <div class="tb"><span class="tb-label">Class</span><span class="tb-value">E, Estes E12</span></div>
+              <div class="tb"><span class="tb-label">Apogee, measured</span><span class="tb-value">1,064 ft</span></div>
+              <div class="tb"><span class="tb-label">Drawn</span><span class="tb-value">M. Kahley</span></div>
+              <div class="tb"><span class="tb-label">Date</span><span class="tb-value">May 2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="now">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Now</h2>
+        <p>Where my time goes this semester.</p>
+      </div>
+      <div class="now-grid">
+        <div class="now-main">
+          <h3>Texas A&amp;M Rocket Engineering Design (RED)</h3>
+          <p class="role">Forebody team member on Icarus. Selected through a technical interview. Sep 2026 to present.</p>
+          <table class="spec">
+            <caption>Icarus liquid launch vehicle</caption>
+            <tbody>
+              <tr><th scope="row">Propellants</th><td>Ethanol / N<sub>2</sub>O</td></tr>
+              <tr><th scope="row">Engine</th><td>1,500 lbf, 600 psi</td></tr>
+              <tr><th scope="row">Target apogee</th><td>85,000 ft</td></tr>
+              <tr class="key"><th scope="row">My focus</th><td>Vehicle flight dynamics simulation</td></tr>
+            </tbody>
+          </table>
+          <ul class="points prose">
+            <li>I develop the flight dynamics simulation the team uses to predict trajectory, apogee, and stability margin through the transonic regime. Its results feed the aerodynamic and structural sizing of the airframe.</li>
+            <li>I led the vehicle diameter trade study, simulating apogee and stability for a 6 in versus a 7.5 in airframe to set the baseline diameter.</li>
+            <li>I'm now extending the simulation to six degrees of freedom with the engine model in the loop.</li>
+          </ul>
+        </div>
+        <div class="now-side">
+          <h3>Students for the Exploration and Development of Space</h3>
+          <p class="role">Officer, Student Astronaut Corps Coordinator. Apr 2026 to present.</p>
+          <div class="prose" style="margin-top:1.1rem">
+            <p>I lead the Student Astronaut Corps, a semester-long, hands-on program that takes 20+ underclassmen through rocket design, fabrication, and launch.</p>
+            <p>I also run the program's technical workshops, guest speaker events, and tours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>Each one is checked against something real: a flight, an independent simulation, or published engine data.</p>
+      </div>
+
+      <article class="project" id="plus-ultra">
+        <header class="project-head">
+          <h3>Plus Ultra 1.0</h3>
+          <p class="sub">E-class model rocket: design, fabrication, and flight test</p>
+        </header>
+        <div class="project-body">
+          <aside class="project-aside">
+            <dl class="meta-block">
+              <div><dt>Date</dt><dd>May 2026</dd></div>
+              <div><dt>Tools</dt><dd>SolidWorks, OpenRocket, Bambu Lab P1S</dd></div>
+            </dl>
+            <table class="spec">
+              <caption>Apogee</caption>
+              <tbody>
+                <tr><th scope="row">Predicted</th><td class="num">1,227 ft</td></tr>
+                <tr><th scope="row">Measured</th><td class="num">1,064 ft</td></tr>
+                <tr class="key"><th scope="row">Difference</th><td class="num">13.3%</td></tr>
+              </tbody>
+            </table>
+          </aside>
+          <div class="project-main">
+            <p class="lead">A custom E-class rocket taken through a full design cycle: simulation, CAD, 3D printing, assembly, and a flight test measured by an onboard altimeter.</p>
+            <div class="figs">
+              <figure>
+                <button class="plate" type="button" data-zoom="images/plus-ultra-development.jpg" data-caption="Development: OpenRocket design, SolidWorks assembly, and the pre-paint build.">
+                  <img src="images/plus-ultra-development.jpg" width="462" height="538" alt="Three views of the rocket: the OpenRocket design, the SolidWorks assembly, and the unpainted physical build" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 1</b>From OpenRocket design to SolidWorks assembly to the pre-paint build.</figcaption>
+              </figure>
+              <figure>
+                <button class="plate photo" type="button" data-zoom="images/plus-ultra-launch.jpg" data-caption="Flight test launch of Plus Ultra 1.0.">
+                  <img src="images/plus-ultra-launch.jpg" width="702" height="763" alt="Plus Ultra 1.0 lifting off the pad under an overcast sky" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 2</b>Flight test. Nominal ascent, parachute deployment, and recovery.</figcaption>
+              </figure>
+            </div>
+            <div class="prose">
+              <h4>What I did</h4>
+              <ul class="points">
+                <li><strong>Simulation before hardware.</strong> I used OpenRocket stability and trajectory runs to set fin geometry, body tube length, nose cone shape, and mass distribution. The same runs checked off-rail velocity, deployment timing, and descent rate before anything was built.</li>
+                <li><strong>CAD built for printing.</strong> I replicated the design as a SolidWorks assembly. Through-the-wall fins with a friction fit keep alignment during assembly, and a custom motor mount holds both the fins and the motor. Every printed part was designed with peak flight loads in mind.</li>
+                <li><strong>Assembly and recovery.</strong> I anchored the shock cord for peak deployment loads and packed the parachute with wadding for a clean deployment from the motor's ejection charge.</li>
+              </ul>
+              <h4 style="margin-top:1.5rem">Result</h4>
+              <p>The flight was nominal from liftoff through recovery. Measured apogee came in 13.3% below the prediction. The likely causes are weathercocking, parasitic drag the model didn't capture, and variation in the motor's actual total impulse.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="flight-sim">
+        <header class="project-head">
+          <h3>3-DOF flight simulator</h3>
+          <p class="sub">First-principles trajectory model with Monte Carlo landing dispersion</p>
+        </header>
+        <div class="project-body">
+          <aside class="project-aside">
+            <dl class="meta-block">
+              <div><dt>Date</dt><dd>August 2026</dd></div>
+              <div><dt>Tools</dt><dd>Python, NumPy, Matplotlib, PyYAML, pytest</dd></div>
+            </dl>
+            <table class="spec">
+              <caption>Apogee, Plus Ultra 1.0</caption>
+              <tbody>
+                <tr><th scope="row">OpenRocket</th><td class="num">376 m</td></tr>
+                <tr><th scope="row">My simulator</th><td class="num">372.2 m</td></tr>
+                <tr class="key"><th scope="row">Difference</th><td class="num">1.0%</td></tr>
+              </tbody>
+            </table>
+          </aside>
+          <div class="project-main">
+            <p class="lead">A point-mass flight simulator written from scratch in Python. I validated it against OpenRocket on Plus Ultra 1.0, then ran it 1,000 times with randomized conditions to predict where the rocket lands.</p>
+            <div class="figs">
+              <figure>
+                <button class="plate" type="button" data-zoom="images/sim-trajectory.png" data-caption="Simulated 3D trajectory of Plus Ultra 1.0, apogee 372.2 m.">
+                  <img src="images/sim-trajectory.png" width="509" height="480" alt="3D plot of the simulated trajectory, rising to a 372.2 meter apogee and drifting northeast before impact" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 3</b>Simulated 3D trajectory. Apogee 372.2 m.</figcaption>
+              </figure>
+              <figure>
+                <button class="plate" type="button" data-zoom="images/sim-dispersion.png" data-caption="Monte Carlo landing dispersion, 1,000 runs, with mean landing point and launch point marked.">
+                  <img src="images/sim-dispersion.png" width="508" height="480" alt="Scatter plot of 1,000 simulated landing points clustered about 30 meters east and 30 meters north of the launch point" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 4</b>Landing dispersion across 1,000 Monte Carlo runs.</figcaption>
+              </figure>
+            </div>
+            <div class="prose">
+              <h4>What I did</h4>
+              <ul class="points">
+                <li><strong>Physics.</strong> Gravity, thrust, drag, and wind act on a point mass in East, North, and altitude coordinates, with thrust and wind each resolved by magnitude and azimuth. Thrust comes from real motor curves loaded from .eng files.</li>
+                <li><strong>Atmosphere.</strong> I built a three-layer International Standard Atmosphere from first principles instead of using a lookup table, and checked it against reference density values.</li>
+                <li><strong>Recovery.</strong> Ballistic, single-deployment, and dual-deployment modes. Apogee and altitude-triggered events are detected during integration, from the velocity sign change and an altitude threshold, rather than found after the fact.</li>
+                <li><strong>Monte Carlo.</strong> 1,000 runs per rocket, randomizing wind speed, wind direction, launch angles, and drag coefficient. Wind-speed spread comes from each launch site's reported sustained-versus-gust spread, so gustier days produce wider landing footprints.</li>
+                <li><strong>Structure and validation.</strong> The simulation is one callable function, and each rocket lives in its own YAML file, so new designs need no code changes. I cross-checked ascent against an independent OpenRocket run and confirmed the thrust and wind decomposition by hand calculation.</li>
+              </ul>
+              <h4 style="margin-top:1.5rem">Result</h4>
+              <p>The simulator matched OpenRocket's apogee for Plus Ultra 1.0 on an Estes E12 to within 1.0%. The Monte Carlo run characterized both apogee variance and the landing footprint, the same kind of dispersion workflow used in range-safety analysis.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="turbojet">
+        <header class="project-head">
+          <h3>Turbojet cycle analysis</h3>
+          <p class="sub">Ideal Brayton cycle benchmarked against the Pratt &amp; Whitney F100</p>
+        </header>
+        <div class="project-body">
+          <aside class="project-aside">
+            <dl class="meta-block">
+              <div><dt>Date</dt><dd>December 2025</dd></div>
+              <div><dt>Tools</dt><dd>Excel, technical report</dd></div>
+            </dl>
+            <table class="spec">
+              <caption>Net thrust</caption>
+              <tbody>
+                <tr><th scope="row">Dry</th><td class="num">61.4 kN</td></tr>
+                <tr><th scope="row">Afterburner</th><td class="num">95.3 kN</td></tr>
+                <tr class="key"><th scope="row">vs. published</th><td class="num">within ~10%</td></tr>
+              </tbody>
+            </table>
+          </aside>
+          <div class="project-main">
+            <p class="lead">An ideal air-standard Brayton cycle worked stage by stage through the inlet, compressor, combustor, turbine, and nozzle, with and without afterburner, then compared to published F100 performance data.</p>
+            <div class="figs stack">
+              <figure>
+                <button class="plate" type="button" data-zoom="images/turbojet-ts.png" data-caption="T-s diagram of the cycle, with and without afterburner.">
+                  <img src="images/turbojet-ts.png" width="2349" height="1334" alt="Temperature versus entropy diagram: vertical isentropic compression and expansion, heat addition in the combustor and afterburner" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 5</b>T–s diagram. Compression and turbine expansion run vertically (isentropic); the combustor and afterburner add heat.</figcaption>
+              </figure>
+              <figure>
+                <button class="plate" type="button" data-zoom="images/turbojet-pv.png" data-caption="P-v diagram of the cycle, with and without afterburner.">
+                  <img src="images/turbojet-pv.png" width="760" height="411" alt="Pressure versus specific volume diagram: compression stages up to about 3.5 megapascals, constant-pressure combustion and afterburning, expansion through the turbine and nozzle" loading="lazy">
+                </button>
+                <figcaption><b>Fig. 6</b>P–v diagram. Combustion and afterburning run at constant pressure.</figcaption>
+              </figure>
+            </div>
+            <div class="prose">
+              <h4>What I did</h4>
+              <ul class="points">
+                <li><strong>State calculations at every stage.</strong> Temperatures and pressures through each compressor stage, the combustor, each turbine stage, and the nozzle.</li>
+                <li><strong>Afterburner case.</strong> I added an afterburning configuration to quantify its effect on thrust, a 55% increase over the dry case.</li>
+                <li><strong>Diagrams and report.</strong> I plotted the T–s and P–v diagrams in Excel and documented the analysis in a formal technical report.</li>
+              </ul>
+              <h4 style="margin-top:1.5rem">Result</h4>
+              <p>Predicted thrust landed within about 10% of published reference data, reasonable agreement for an air-standard model of a real engine.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="background">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Background</h2>
+      </div>
+      <div class="bg-grid">
+        <div>
+          <h3>Education</h3>
+          <dl class="entries">
+            <div>
+              <dt>Texas A&amp;M University</dt>
+              <dd>B.S. Aerospace Engineering, minor in Mathematics<span class="when">Expected May 2028</span></dd>
+            </div>
+            <div>
+              <dt>3.86 / 4.0 GPA</dt>
+              <dd>Engineering Honors Program, top 10%</dd>
+            </div>
+          </dl>
+        </div>
+        <div>
+          <h3>Skills</h3>
+          <dl class="entries">
+            <div><dt>CAD and fabrication</dt><dd>SolidWorks parametric CAD, 3D printing for flight hardware</dd></div>
+            <div><dt>Simulation and analysis</dt><dd>Python (NumPy, Matplotlib, PyYAML, pytest), MATLAB, OpenRocket, Excel</dd></div>
+            <div><dt>Documentation</dt><dd>LaTeX, formal technical reports</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Also</h3>
+          <dl class="entries">
+            <div>
+              <dt>Founder, Mark's Real Estate Runners</dt>
+              <dd>Started and ran a courier, signage logistics, and property service supporting 10+ luxury listings each week.<span class="when">May 2023 to Jan 2026</span></dd>
+            </div>
+            <div>
+              <dt>Philanthropy Board, Alpha Sigma Phi</dt>
+              <dd><span class="when">Mar 2025 to present</span></dd>
+            </div>
+            <div>
+              <dt>AIAA student member</dt>
+              <dd><span class="when">Sep 2025 to present</span></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap contact-grid">
+      <div class="section-head" style="margin-bottom:0">
+        <h2>Contact</h2>
+        <p>I'm looking for a summer 2027 internship in aerospace, especially in launch vehicles, flight dynamics, and simulation. Email is the fastest way to reach me.</p>
+      </div>
+      <dl class="contact-list">
+        <div class="contact-row">
+          <dt>Email</dt>
+          <dd><a id="email" href="mailto:mark.a.kahley@gmail.com">mark.a.kahley@gmail.com</a><button class="copy" id="copy-email" type="button">Copy</button></dd>
+        </div>
+        <div class="contact-row">
+          <dt>LinkedIn</dt>
+          <dd><a href="https://www.linkedin.com/in/mark-kahley" target="_blank" rel="noopener">linkedin.com/in/mark-kahley</a></dd>
+        </div>
+        <div class="contact-row">
+          <dt>Resume</dt>
+          <dd><a href="Mark_Kahley_Resume.pdf" target="_blank" rel="noopener">Mark_Kahley_Resume.pdf</a></dd>
+        </div>
+        <div class="contact-row">
+          <dt>Portfolio</dt>
+          <dd><a href="Mark_Kahley_Portfolio.pdf" target="_blank" rel="noopener">Mark_Kahley_Portfolio.pdf</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">Mark Kahley, College Station, Texas. Last updated October 2026.</div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Figure viewer">
+  <div class="viewer-inner">
+    <img id="viewer-img" src="data:," alt="">
+    <p id="viewer-cap"></p>
+    <button class="btn" type="button" id="viewer-close">Close</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('viewer');
+  var img = document.getElementById('viewer-img');
+  var cap = document.getElementById('viewer-cap');
+  var canModal = dlg && typeof dlg.showModal === 'function';
+
+  document.querySelectorAll('[data-zoom]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var src = btn.getAttribute('data-zoom');
+      if (!canModal) { window.open(src, '_blank', 'noopener'); return; }
+      var inner = btn.querySelector('img');
+      img.src = src;
+      img.alt = inner ? inner.alt : '';
+      cap.textContent = btn.getAttribute('data-caption') || '';
+      dlg.showModal();
+    });
+  });
+  if (canModal) {
+    document.getElementById('viewer-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  }
+
+  var copyBtn = document.getElementById('copy-email');
+  var email = document.getElementById('email');
+  if (copyBtn && email) {
+    copyBtn.addEventListener('click', function () {
+      var text = email.textContent.trim();
+      var done = function () { copyBtn.textContent = 'Copied'; setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(email);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        copyBtn.textContent = 'Selected';
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else { fallback(); }
+      } catch (e) { fallback(); }
+    });
+  }
+})();
+</script>
+<!--ARTIFACT-END-->
+</body>
+</html>
