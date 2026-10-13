@@ -327,21 +327,21 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
       </div>
       <div class="now-grid">
         <div class="now-main">
-          <h3>Texas A&amp;M Rocket Engineering Design (RED)</h3>
+          <h3>Texas A&amp;M Rocket Engine Design (RED)</h3>
           <p class="role">Forebody team member on Icarus. Selected through a technical interview. Sep 2026 to present.</p>
           <table class="spec">
             <caption>Icarus liquid launch vehicle</caption>
             <tbody>
-              <tr><th scope="row">Propellants</th><td>Ethanol / N<sub>2</sub>O</td></tr>
-              <tr><th scope="row">Engine</th><td>1,500 lbf, 600 psi</td></tr>
-              <tr><th scope="row">Target apogee</th><td>85,000 ft</td></tr>
-              <tr class="key"><th scope="row">My focus</th><td>Vehicle flight dynamics simulation</td></tr>
+              <tr><th scope="row">Propulsion</th><td>Pressure-fed ethanol / N<sub>2</sub>O bipropellant</td></tr>
+              <tr><th scope="row">Competition</th><td>TCPF FAR challenge</td></tr>
+              <tr><th scope="row">Target apogee</th><td>85,000 ft, supersonic</td></tr>
+              <tr><th scope="row">Airframe</th><td>7.5 in diameter</td></tr>
+              <tr class="key"><th scope="row">My focus</th><td>6-DOF trajectory simulation</td></tr>
             </tbody>
           </table>
           <ul class="points prose">
-            <li>I develop the flight dynamics simulation the team uses to predict trajectory, apogee, and stability margin through the transonic regime. Its results feed the aerodynamic and structural sizing of the airframe.</li>
-            <li>I led the vehicle diameter trade study, simulating apogee and stability for a 6 in versus a 7.5 in airframe to set the baseline diameter.</li>
-            <li>I'm now extending the simulation to six degrees of freedom with the engine model in the loop.</li>
+            <li>I'm writing a 6-DOF trajectory simulator for Icarus from scratch in Python. It uses quaternion rigid-body dynamics, RK4 integration, RASAero II aerodynamic tables, and .eng thrust curves. I verified its mass properties against OpenRocket.</li>
+            <li>I led the airframe diameter trade study in Excel, comparing apogee and stability for a 6 in and a 7.5 in airframe. The team adopted the 7.5 in airframe based on the results.</li>
           </ul>
         </div>
         <div class="now-side">
@@ -540,7 +540,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
           <h3>Skills</h3>
           <dl class="entries">
             <div><dt>CAD and fabrication</dt><dd>SolidWorks parametric CAD, 3D printing for flight hardware</dd></div>
-            <div><dt>Simulation and analysis</dt><dd>Python (NumPy, Matplotlib, PyYAML, pytest), MATLAB, OpenRocket, Excel</dd></div>
+            <div><dt>Simulation and analysis</dt><dd>Python (NumPy, Matplotlib, PyYAML, pytest), MATLAB, OpenRocket, RASAero II, Excel, GitHub</dd></div>
             <div><dt>Documentation</dt><dd>LaTeX, formal technical reports</dd></div>
           </dl>
         </div>
