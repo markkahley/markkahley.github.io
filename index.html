@@ -93,6 +93,13 @@ sub { font-size: 0.7em; }
 .hero h1 { font-size: clamp(2.7rem, 7.5vw, 4.75rem); letter-spacing: -0.025em; line-height: 0.98; }
 .hero .lede { margin-top: 1.1rem; font-size: clamp(1.2rem, 2.3vw, 1.5rem); line-height: 1.4; max-width: 34ch; }
 .hero .facts { margin-top: 0.9rem; color: var(--ink-2); max-width: 60ch; }
+.hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+.hero-text { min-width: 0; }
+.headshot { width: clamp(11rem, 20vw, 15.5rem); max-width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1.5px solid var(--ink); padding: 5px; background: var(--sheet); }
+@media (max-width: 640px) {
+  .hero-top { grid-template-columns: 1fr; }
+  .headshot { order: -1; width: 8.5rem; }
+}
 .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -267,13 +274,18 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <h1>Mark Kahley</h1>
-      <p class="lede">Aerospace engineering student at Texas A&amp;M. I design, build, and fly rockets, and I write the simulations that predict how they will fly.</p>
-      <p class="facts">B.S. Aerospace Engineering with a minor in Mathematics, Class of 2028. 3.86 GPA, Engineering Honors. Looking for a summer 2027 internship in aerospace.</p>
-      <div class="actions">
-        <a class="btn primary" href="mailto:mark.a.kahley@gmail.com">Email me</a>
-        <a class="btn" href="Mark_Kahley_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-        <a class="btn" href="https://www.linkedin.com/in/mark-kahley" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="hero-top">
+        <div class="hero-text">
+          <h1>Mark Kahley</h1>
+          <p class="lede">Aerospace engineering student at Texas A&amp;M. I design, build, and fly rockets, and I write the simulations that predict how they will fly.</p>
+          <p class="facts">B.S. Aerospace Engineering with a minor in Mathematics, Class of 2028. 3.86 GPA, Engineering Honors. Looking for a summer 2027 internship in aerospace.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:mark.a.kahley@gmail.com">Email me</a>
+            <a class="btn" href="Mark_Kahley_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+            <a class="btn" href="https://www.linkedin.com/in/mark-kahley" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <img class="headshot" src="images/mark-kahley-headshot.jpg" width="640" height="800" alt="Headshot of Mark Kahley">
       </div>
 
       <div class="sheet">
@@ -379,7 +391,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
               <tbody>
                 <tr><th scope="row">Predicted</th><td class="num">1,227 ft</td></tr>
                 <tr><th scope="row">Measured</th><td class="num">1,064 ft</td></tr>
-                <tr class="key"><th scope="row">Difference</th><td class="num">13.3%</td></tr>
+                <tr class="key"><th scope="row">Error</th><td class="num">15.3%</td></tr>
               </tbody>
             </table>
           </aside>
@@ -407,7 +419,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
                 <li><strong>Assembly and recovery.</strong> I anchored the shock cord for peak deployment loads and packed the parachute with wadding for a clean deployment from the motor's ejection charge.</li>
               </ul>
               <h4 style="margin-top:1.5rem">Result</h4>
-              <p>The flight was nominal from liftoff through recovery. Measured apogee came in 13.3% below the prediction. The likely causes are weathercocking, parasitic drag the model didn't capture, and variation in the motor's actual total impulse.</p>
+              <p>The flight was nominal from liftoff through recovery. The prediction overshot the measured apogee by 15.3%. The likely causes are weathercocking, parasitic drag the model didn't capture, and variation in the motor's actual total impulse.</p>
             </div>
           </div>
         </div>
