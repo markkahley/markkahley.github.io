@@ -7,47 +7,43 @@
 <meta property="og:title" content="Mark Kahley, Aerospace Engineering">
 <meta property="og:description" content="Rocket design and flight testing, flight simulation, and propulsion analysis. Texas A&amp;M Aerospace Engineering, Class of 2028.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2c5 6 7 12 7 20H9c0-8 2-14 7-20z' fill='%232c7743'/%3E%3Cpath d='M9 21l-5 8h5zm14 0l5 8h-5z' fill='%2314243a'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2c5 6 7 12 7 20H9c0-8 2-14 7-20z' fill='%23500001'/%3E%3Cpath d='M9 21l-5 8h5zm14 0l5 8h-5z' fill='%231b1a1f'/%3E%3C/svg%3E">
 <!--ARTIFACT-START-->
 <title>Mark Kahley Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400&amp;family=B612+Mono:wght@400;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 /* Layout: one loud element, a drafting sheet of Plus Ultra 1.0 with balloon callouts,
-   parts list and title block; below it, quiet long-form case studies with a sticky data column. */
+   parts list and title block; below it, quiet long-form case studies with a sticky data column.
+   Identity follows the business card: warm card stock, near-black ink, Aggie maroon,
+   Archivo in a wide caps wordmark with a plain grotesque for everything else. */
 :root {
-  --paper: #f2f4f0;       /* page ground, cool vellum */
-  --sheet: #fbfcfa;       /* drawing sheet and raised surfaces */
-  --ink: #14243a;         /* drafting ink navy */
-  --ink-2: #4b5967;       /* secondary text */
-  --rule: #cdd5cc;        /* hairlines, green-grey */
-  --green: #2a7341;       /* nose-cone green, the one accent */
-  --green-wash: #e2ede3;
+  --paper: #f9f8f4;       /* card stock */
+  --sheet: #fdfcfa;       /* drawing sheet and raised surfaces */
+  --ink: #1b1a1f;         /* card name ink */
+  --ink-2: #57565c;       /* card secondary grey */
+  --rule: #dcd8cf;        /* warm hairlines */
+  --accent: #500001;      /* Texas A&M maroon, from the card */
+  --accent-wash: #f3e9e7;
   --plate: #ffffff;       /* figure plates match the white plot backgrounds */
-  --dot: #14243a;         /* callout dots sit on the render, so they keep one color in both themes */
+  --dot: #1b1a1f;         /* callout dots sit on the render, so they keep one color in both themes */
   --dot-ring: #ffffff;
+  --band: #500001;        /* maroon band, the card's back side */
+  --on-band: #f9f8f4;
+  --on-band-2: #dcbfbd;
+  --band-rule: #7a2a2b;
 
-  --f-display: "B612", "Segoe UI", system-ui, sans-serif;           /* Airbus cockpit-display face */
-  --f-body: "Source Serif 4", "Iowan Old Style", Georgia, serif;     /* echoes the LaTeX portfolio */
-  --f-data: "B612 Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-display: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-data: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
 
   --wrap: 72rem;
   --gutter: clamp(16px, 4vw, 40px);
   --bar-h: 3.5rem;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0d141c; --sheet: #121b25; --ink: #e2e7ec; --ink-2: #98a5b2;
-    --rule: #283542; --green: #74c38a; --green-wash: #15271c; --plate: #ffffff;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0d141c; --sheet: #121b25; --ink: #e2e7ec; --ink-2: #98a5b2;
-  --rule: #283542; --green: #74c38a; --green-wash: #15271c; --plate: #ffffff;
-  color-scheme: dark;
-}
+/* Light only: the site always matches the card stock, whatever the viewer's theme. */
+:root, :root[data-theme="dark"] { color-scheme: light; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: calc(var(--bar-h) + 1rem); -webkit-text-size-adjust: 100%; }
@@ -57,15 +53,15 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-body);
-  font-size: 1.0625rem;
-  line-height: 1.62;
-  font-optical-sizing: auto;
+  font-size: 1.03rem;
+  line-height: 1.6;
+  font-stretch: 100%;
 }
 img { max-width: 100%; height: auto; display: block; }
-a { color: var(--green); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 2px; }
-h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3, h4 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; font-weight: 700; }
 p { margin: 0; }
 sub { font-size: 0.7em; }
 
@@ -82,7 +78,7 @@ sub { font-size: 0.7em; }
   border-bottom: 1px solid var(--rule);
 }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: var(--bar-h); }
-.bar .who { font-family: var(--f-display); font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.bar .who { font-family: var(--f-display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.9rem; color: var(--ink); text-decoration: none; white-space: nowrap; }
 .bar nav { display: flex; gap: clamp(0.9rem, 2.5vw, 1.75rem); font-family: var(--f-display); font-size: 0.875rem; }
 .bar nav a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
 .bar nav a:hover { color: var(--ink); }
@@ -90,8 +86,9 @@ sub { font-size: 0.7em; }
 
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 4rem); }
-.hero h1 { font-size: clamp(2.7rem, 7.5vw, 4.75rem); letter-spacing: -0.025em; line-height: 0.98; }
-.hero .lede { margin-top: 1.1rem; font-size: clamp(1.2rem, 2.3vw, 1.5rem); line-height: 1.4; max-width: 34ch; }
+.hero h1 { font-size: clamp(2.1rem, 6.4vw, 4.3rem); font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.hero .lede { margin-top: 1.1rem; font-size: clamp(1.15rem, 2.1vw, 1.4rem); line-height: 1.42; max-width: 36ch; }
+.card-rule { display: block; width: 5.5rem; height: 3px; background: var(--accent); margin-top: 1.6rem; }
 .hero .facts { margin-top: 0.9rem; color: var(--ink-2); max-width: 60ch; }
 .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
 .hero-text { min-width: 0; }
@@ -100,7 +97,7 @@ sub { font-size: 0.7em; }
   .hero-top { grid-template-columns: 1fr; }
   .headshot { order: -1; width: 8.5rem; }
 }
-.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-family: var(--f-display); font-size: 0.9rem; font-weight: 700;
@@ -109,8 +106,8 @@ sub { font-size: 0.7em; }
   transition: background-color .15s, color .15s, border-color .15s;
 }
 .btn:hover { background: var(--ink); color: var(--paper); }
-.btn.primary { background: var(--ink); color: var(--paper); }
-.btn.primary:hover { background: var(--green); border-color: var(--green); color: var(--paper); }
+.btn.primary { background: var(--band); border-color: var(--band); color: var(--on-band); }
+.btn.primary:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
 /* ---------- the drafting sheet ---------- */
 .sheet { margin-top: clamp(2.25rem, 5vw, 3.25rem); background: var(--sheet); border: 1.5px solid var(--ink); padding: 5px; }
@@ -159,14 +156,15 @@ sub { font-size: 0.7em; }
 /* ---------- sections ---------- */
 .section { padding-block: clamp(3rem, 7vw, 5rem); border-top: 1px solid var(--rule); }
 .section-head { margin-bottom: clamp(1.75rem, 4vw, 2.75rem); display: grid; gap: 0.55rem; }
-.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.2rem); letter-spacing: -0.015em; }
+.section-head h2 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); font-weight: 800; font-stretch: 125%; letter-spacing: 0; }
 .section-head p { color: var(--ink-2); max-width: 62ch; }
+#projects .section-head h2 { font-size: clamp(2.1rem, 4.6vw, 3rem); }
 
 .role { color: var(--ink-2); margin-top: 0.4rem; }
 .prose { max-width: 66ch; }
 .prose > * + * { margin-top: 0.9rem; }
 ul.points { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.6rem; }
-ul.points li::marker { color: var(--green); }
+ul.points li::marker { color: var(--accent); }
 ul.points strong { font-weight: 600; }
 
 /* spec / readout tables share the title-block language */
@@ -176,15 +174,16 @@ ul.points strong { font-weight: 600; }
 .spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
 .spec th { font-weight: 400; font-size: 0.8rem; color: var(--ink-2); }
 .spec td { font-weight: 700; font-size: 0.95rem; }
-.spec td.num { text-align: right; white-space: nowrap; font-family: var(--f-data); font-variant-numeric: tabular-nums; font-weight: 700; }
-.spec tr.key { background: var(--green-wash); }
-.spec tr.key td { color: var(--green); }
+.spec td.num { text-align: right; white-space: nowrap; font-family: var(--f-data); font-variant-numeric: tabular-nums; font-weight: 700; font-stretch: 112%; }
+.spec tr.key { background: var(--accent-wash); }
+.spec tr.key td { color: var(--accent); }
 
 /* ---------- current work ---------- */
 .now-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .now-grid > * { min-width: 0; }
 .now-main h3, .now-side h3 { font-size: 1.3rem; }
 .now-main .spec { margin-block: 1.4rem; }
+.now-fig { margin-top: 1.6rem; }
 .now-side { border-left: 1px solid var(--rule); padding-left: clamp(1.25rem, 3vw, 2rem); }
 @media (max-width: 860px) {
   .now-grid { grid-template-columns: 1fr; }
@@ -194,7 +193,7 @@ ul.points strong { font-weight: 600; }
 /* ---------- projects ---------- */
 .project + .project { margin-top: clamp(3.5rem, 8vw, 5.5rem); padding-top: clamp(3.5rem, 8vw, 5.5rem); border-top: 1px dashed var(--rule); }
 .project-head { margin-bottom: 1.75rem; display: grid; gap: 0.35rem; }
-.project-head h3 { font-size: clamp(1.5rem, 3vw, 1.95rem); letter-spacing: -0.01em; }
+.project-head h3 { font-size: clamp(1.45rem, 2.8vw, 1.85rem); font-weight: 800; font-stretch: 112%; letter-spacing: 0; }
 .project-head .sub { color: var(--ink-2); font-size: 1.1rem; }
 .project-body { display: grid; grid-template-columns: 15.5rem minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; }
 .project-aside { position: sticky; top: calc(var(--bar-h) + 1.25rem + env(safe-area-inset-top, 0px)); display: grid; gap: 1.4rem; font-family: var(--f-display); }
@@ -246,16 +245,25 @@ figcaption b { font-family: var(--f-display); color: var(--ink); font-weight: 70
 .contact-row a { font-weight: 700; overflow-wrap: anywhere; }
 .copy { font-family: var(--f-display); font-size: 0.75rem; padding: 0.2rem 0.55rem; border: 1px solid var(--rule); border-radius: 3px; background: transparent; color: var(--ink-2); cursor: pointer; }
 .copy:hover { border-color: var(--ink-2); color: var(--ink); }
+.band { background: var(--band); color: var(--on-band); border-top: 0; }
+.band .section-head p { color: var(--on-band-2); }
+.band .contact-list { border-top-color: var(--on-band); }
+.band .contact-row { border-bottom-color: var(--band-rule); }
+.band .contact-row dt { color: var(--on-band-2); }
+.band a { color: var(--on-band); }
+.band .copy { border-color: var(--band-rule); color: var(--on-band-2); }
+.band .copy:hover { border-color: var(--on-band); color: var(--on-band); }
+.band :focus-visible { outline-color: var(--on-band); }
 .site-foot { padding-block: 2rem 2.5rem; color: var(--ink-2); font-size: 0.85rem; border-top: 1px solid var(--rule); }
 
 /* ---------- figure viewer ---------- */
 dialog.viewer { border: 0; padding: 0; background: transparent; max-width: 94vw; max-height: 92vh; overflow: visible; }
-dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
+dialog.viewer::backdrop { background: rgba(20, 12, 13, 0.86); }
 .viewer-inner { display: grid; gap: 0.6rem; justify-items: center; }
 .viewer img { max-width: 94vw; max-height: 80vh; width: auto; height: auto; background: #ffffff; padding: 0.5rem; border-radius: 2px; }
 .viewer p { color: #e6ebf0; font-size: 0.9rem; max-width: 70ch; text-align: center; font-family: var(--f-body); }
 .viewer .btn { color: #e6ebf0; border-color: #e6ebf0; }
-.viewer .btn:hover { background: #e6ebf0; color: #0d141c; }
+.viewer .btn:hover { background: #e6ebf0; color: #141213; }
 </style>
 </head>
 <body>
@@ -279,6 +287,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
           <h1>Mark Kahley</h1>
           <p class="lede">Aerospace engineering student at Texas A&amp;M. I design, build, and fly rockets, and I write the simulations that predict how they will fly.</p>
           <p class="facts">B.S. Aerospace Engineering with a minor in Mathematics, Class of 2028. 3.86 GPA, Engineering Honors. Looking for a summer 2027 internship in aerospace.</p>
+          <span class="card-rule" aria-hidden="true"></span>
           <div class="actions">
             <a class="btn primary" href="mailto:mark.a.kahley@gmail.com">Email me</a>
             <a class="btn" href="Mark_Kahley_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -352,9 +361,16 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
             </tbody>
           </table>
           <ul class="points prose">
-            <li>I'm writing a 6-DOF trajectory simulator for Icarus from scratch in Python. It uses quaternion rigid-body dynamics, RK4 integration, RASAero II aerodynamic tables, and .eng thrust curves. I verified its mass properties against OpenRocket.</li>
+            <li>I'm writing a 6-DOF trajectory simulator for Icarus from scratch in Python. It uses quaternion rigid-body dynamics, RK4 integration, RASAero II aerodynamic tables, and integrates either a custom transient engine simulation or an .eng file for thrust analysis.</li>
             <li>I led the airframe diameter trade study in Excel, comparing apogee and stability for a 6 in and a 7.5 in airframe. The team adopted the 7.5 in airframe based on the results.</li>
+            <li>I ran full 6-DOF flight simulations with a transient engine model to find the apogee-optimal nozzle expansion ratio. The results guided the team's final nozzle choice.</li>
           </ul>
+          <figure class="now-fig">
+            <button class="plate" type="button" data-zoom="images/icarus-6dof.png" data-caption="Icarus 6-DOF simulation: altitude, speed, Mach number, total angle of attack, nose tilt, and trajectory, with rail exit, burnout, and apogee marked.">
+              <img src="images/icarus-6dof.png" width="1495" height="796" alt="Six plots from the Icarus 6-DOF simulation: altitude, speed, Mach number, total angle of attack, nose tilt from vertical, and altitude versus downrange distance" loading="lazy">
+            </button>
+            <figcaption><b>Fig. A</b>Output from my Icarus 6-DOF simulator, with rail exit, burnout, and apogee marked.</figcaption>
+          </figure>
         </div>
         <div class="now-side">
           <h3>Students for the Exploration and Development of Space</h3>
@@ -372,7 +388,6 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
     <div class="wrap">
       <div class="section-head">
         <h2>Projects</h2>
-        <p>Each one is checked against something real: a flight, an independent simulation, or published engine data.</p>
       </div>
 
       <article class="project" id="plus-ultra">
@@ -577,7 +592,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
     </div>
   </section>
 
-  <section class="section" id="contact">
+  <section class="section band" id="contact">
     <div class="wrap contact-grid">
       <div class="section-head" style="margin-bottom:0">
         <h2>Contact</h2>
@@ -606,7 +621,7 @@ dialog.viewer::backdrop { background: rgba(8, 14, 22, 0.82); }
 </main>
 
 <footer class="site-foot">
-  <div class="wrap">Mark Kahley, College Station, Texas. Last updated October 2026.</div>
+  <div class="wrap">Mark Kahley, College Station, Texas. Last updated November 2026.</div>
 </footer>
 
 <dialog class="viewer" id="viewer" aria-label="Figure viewer">
